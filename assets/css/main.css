@@ -2410,9 +2410,15 @@ input, select, textarea {
 			width: 100%;
 		}
 
-			.image.main img {
-				width: 100%;
-			}
+		.image.main img {
+			width: 100%;
+		}
+	
+		.image.profile img {
+			width: 100px;
+			height: 100px;
+			object-fit: cover; /* Ensures the image scales correctly and retains its aspect ratio */
+		}
 
 /* List */
 

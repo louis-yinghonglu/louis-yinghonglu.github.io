@@ -1,0 +1,1081 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Main Page</title>
+	<style>
+		/* cspell:disable-file */
+		/* webkit printing magic: print all background colors */
+		html {
+			-webkit-print-color-adjust: exact;
+		}
+
+		* {
+			box-sizing: border-box;
+			-webkit-print-color-adjust: exact;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		@media only screen {
+			body {
+				margin: 2em auto;
+				max-width: 900px;
+				color: rgb(55, 53, 47);
+			}
+		}
+
+		body {
+			line-height: 1.5;
+			white-space: pre-wrap;
+		}
+
+		a,
+		a.visited {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		.pdf-relative-link-path {
+			font-size: 80%;
+			color: #444;
+		}
+
+		h1,
+		h2,
+		h3 {
+			letter-spacing: -0.01em;
+			line-height: 1.2;
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+
+		.page-title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-top: 0;
+			margin-bottom: 0.75em;
+		}
+
+		h1 {
+			font-size: 1.875rem;
+			margin-top: 1.875rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.25rem;
+			margin-top: 1.25rem;
+		}
+
+		.source {
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 1.5em;
+			word-break: break-all;
+		}
+
+		.callout {
+			border-radius: 3px;
+			padding: 1rem;
+		}
+
+		figure {
+			margin: 1.25em 0;
+			page-break-inside: avoid;
+		}
+
+		figcaption {
+			opacity: 0.5;
+			font-size: 85%;
+			margin-top: 0.5em;
+		}
+
+		mark {
+			background-color: transparent;
+		}
+
+		.indented {
+			padding-left: 1.5em;
+		}
+
+		hr {
+			background: transparent;
+			display: block;
+			width: 100%;
+			height: 1px;
+			visibility: visible;
+			border: none;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		@media only print {
+			img {
+				max-height: 100vh;
+				object-fit: contain;
+			}
+		}
+
+		@page {
+			margin: 1in;
+		}
+
+		.collection-content {
+			font-size: 0.875rem;
+		}
+
+		.column-list {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.column {
+			padding: 0 1em;
+		}
+
+		.column:first-child {
+			padding-left: 0;
+		}
+
+		.column:last-child {
+			padding-right: 0;
+		}
+
+		.table_of_contents-item {
+			display: block;
+			font-size: 0.875rem;
+			line-height: 1.3;
+			padding: 0.125rem;
+		}
+
+		.table_of_contents-indent-1 {
+			margin-left: 1.5rem;
+		}
+
+		.table_of_contents-indent-2 {
+			margin-left: 3rem;
+		}
+
+		.table_of_contents-indent-3 {
+			margin-left: 4.5rem;
+		}
+
+		.table_of_contents-link {
+			text-decoration: none;
+			opacity: 0.7;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid rgba(55, 53, 47, 0.09);
+			border-collapse: collapse;
+		}
+
+		table {
+			border-left: none;
+			border-right: none;
+		}
+
+		th,
+		td {
+			font-weight: normal;
+			padding: 0.25em 0.5em;
+			line-height: 1.5;
+			min-height: 1.5em;
+			text-align: left;
+		}
+
+		th {
+			color: rgba(55, 53, 47, 0.6);
+		}
+
+		ol,
+		ul {
+			margin: 0;
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+
+		li>ol:first-child,
+		li>ul:first-child {
+			margin-block-start: 0.6em;
+		}
+
+		ul>li {
+			list-style: disc;
+		}
+
+		ul.to-do-list {
+			padding-inline-start: 0;
+		}
+
+		ul.to-do-list>li {
+			list-style: none;
+		}
+
+		.to-do-children-checked {
+			text-decoration: line-through;
+			opacity: 0.375;
+		}
+
+		ul.toggle>li {
+			list-style: none;
+		}
+
+		ul {
+			padding-inline-start: 1.7em;
+		}
+
+		ul>li {
+			padding-left: 0.1em;
+		}
+
+		ol {
+			padding-inline-start: 1.6em;
+		}
+
+		ol>li {
+			padding-left: 0.2em;
+		}
+
+		.mono ol {
+			padding-inline-start: 2em;
+		}
+
+		.mono ol>li {
+			text-indent: -0.4em;
+		}
+
+		.toggle {
+			padding-inline-start: 0em;
+			list-style-type: none;
+		}
+
+		/* Indent toggle children */
+		.toggle>li>details {
+			padding-left: 1.7em;
+		}
+
+		.toggle>li>details>summary {
+			margin-left: -1.1em;
+		}
+
+		.selected-value {
+			display: inline-block;
+			padding: 0 0.5em;
+			background: rgba(206, 205, 202, 0.5);
+			border-radius: 3px;
+			margin-right: 0.5em;
+			margin-top: 0.3em;
+			margin-bottom: 0.3em;
+			white-space: nowrap;
+		}
+
+		.collection-title {
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		.page-description {
+			margin-bottom: 2em;
+		}
+
+		.simple-table {
+			margin-top: 1em;
+			font-size: 0.875rem;
+			empty-cells: show;
+		}
+
+		.simple-table td {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table th {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table-header-color {
+			background: rgb(247, 246, 243);
+			color: black;
+		}
+
+		.simple-table-header {
+			font-weight: 500;
+		}
+
+		time {
+			opacity: 0.5;
+		}
+
+		.icon {
+			display: inline-block;
+			max-width: 1.2em;
+			max-height: 1.2em;
+			text-decoration: none;
+			vertical-align: text-bottom;
+			margin-right: 0.5em;
+		}
+
+		img.icon {
+			border-radius: 3px;
+		}
+
+		.user-icon {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 100%;
+			margin-right: 0.5rem;
+		}
+
+		.user-icon-inner {
+			font-size: 0.8em;
+		}
+
+		.text-icon {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		.page-cover-image {
+			display: block;
+			object-fit: cover;
+			width: 100%;
+			max-height: 30vh;
+		}
+
+		.page-header-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header-icon-with-cover {
+			margin-top: -0.72em;
+			margin-left: 0.07em;
+		}
+
+		.page-header-icon img {
+			border-radius: 3px;
+		}
+
+		.link-to-page {
+			margin: 1em 0;
+			padding: 0;
+			border: none;
+			font-weight: 500;
+		}
+
+		p>.user {
+			opacity: 0.5;
+		}
+
+		td>.user,
+		td>time {
+			white-space: nowrap;
+		}
+
+		input[type="checkbox"] {
+			transform: scale(1.5);
+			margin-right: 0.6em;
+			vertical-align: middle;
+		}
+
+		p {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		.image {
+			border: none;
+			margin: 1.5em 0;
+			padding: 0;
+			border-radius: 0;
+			text-align: center;
+		}
+
+		.code,
+		code {
+			background: rgba(135, 131, 120, 0.15);
+			border-radius: 3px;
+			padding: 0.2em 0.4em;
+			border-radius: 3px;
+			font-size: 85%;
+			tab-size: 2;
+		}
+
+		code {
+			color: #eb5757;
+		}
+
+		.code {
+			padding: 1.5em 1em;
+		}
+
+		.code-wrap {
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
+
+		.code>code {
+			background: none;
+			padding: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+
+		blockquote {
+			font-size: 1.25em;
+			margin: 1em 0;
+			padding-left: 1em;
+			border-left: 3px solid rgb(55, 53, 47);
+		}
+
+		.bookmark {
+			text-decoration: none;
+			max-height: 8em;
+			padding: 0;
+			display: flex;
+			width: 100%;
+			align-items: stretch;
+		}
+
+		.bookmark-title {
+			font-size: 0.85em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 1.75em;
+			white-space: nowrap;
+		}
+
+		.bookmark-text {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bookmark-info {
+			flex: 4 1 180px;
+			padding: 12px 14px 14px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.bookmark-image {
+			width: 33%;
+			flex: 1 1 180px;
+			display: block;
+			position: relative;
+			object-fit: cover;
+			border-radius: 1px;
+		}
+
+		.bookmark-description {
+			color: rgba(55, 53, 47, 0.6);
+			font-size: 0.75em;
+			overflow: hidden;
+			max-height: 4.5em;
+			word-break: break-word;
+		}
+
+		.bookmark-href {
+			font-size: 0.75em;
+			margin-top: 0.25em;
+		}
+
+		.sans {
+			font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+
+		.code {
+			font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+		}
+
+		.serif {
+			font-family: Lyon-Text, Georgia, ui-serif, serif;
+		}
+
+		.mono {
+			font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+		}
+
+		.pdf .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+		}
+
+		.pdf .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.pdf .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+		}
+
+		.pdf .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.highlight-default {
+			color: rgba(55, 53, 47, 1);
+		}
+
+		.highlight-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.highlight-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.highlight-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.highlight-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.highlight-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.highlight-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.highlight-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.highlight-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.highlight-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.highlight-default_background {
+			color: rgba(55, 53, 47, 1);
+		}
+
+		.highlight-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.highlight-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.highlight-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.highlight-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.highlight-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.highlight-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.highlight-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.highlight-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.highlight-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.block-color-default {
+			color: inherit;
+			fill: inherit;
+		}
+
+		.block-color-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.block-color-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.block-color-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.block-color-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.block-color-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.block-color-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.block-color-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.block-color-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.block-color-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.block-color-default_background {
+			color: inherit;
+			fill: inherit;
+		}
+
+		.block-color-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.block-color-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.block-color-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.block-color-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.block-color-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.block-color-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.block-color-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.block-color-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.block-color-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.select-value-color-uiBlue {
+			background-color: rgba(35, 131, 226, .07);
+		}
+
+		.select-value-color-pink {
+			background-color: rgba(245, 224, 233, 1);
+		}
+
+		.select-value-color-purple {
+			background-color: rgba(232, 222, 238, 1);
+		}
+
+		.select-value-color-green {
+			background-color: rgba(219, 237, 219, 1);
+		}
+
+		.select-value-color-gray {
+			background-color: rgba(227, 226, 224, 1);
+		}
+
+		.select-value-color-transparentGray {
+			background-color: rgba(227, 226, 224, 0);
+		}
+
+		.select-value-color-translucentGray {
+			background-color: rgba(0, 0, 0, 0.06);
+		}
+
+		.select-value-color-orange {
+			background-color: rgba(250, 222, 201, 1);
+		}
+
+		.select-value-color-brown {
+			background-color: rgba(238, 224, 218, 1);
+		}
+
+		.select-value-color-red {
+			background-color: rgba(255, 226, 221, 1);
+		}
+
+		.select-value-color-yellow {
+			background-color: rgba(253, 236, 200, 1);
+		}
+
+		.select-value-color-blue {
+			background-color: rgba(211, 229, 239, 1);
+		}
+
+		.select-value-color-pageGlass {
+			background-color: undefined;
+		}
+
+		.select-value-color-washGlass {
+			background-color: undefined;
+		}
+
+		.checkbox {
+			display: inline-flex;
+			vertical-align: text-bottom;
+			width: 16;
+			height: 16;
+			background-size: 16px;
+			margin-left: 2px;
+			margin-right: 5px;
+		}
+
+		.checkbox-on {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+		.checkbox-off {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+	</style>
+</head>
+
+<body>
+	<article id="17a1fefb-5d05-8019-b459-c8624c6794bd" class="page sans">
+		<header>
+			<h1 class="page-title">Main Page</h1>
+			<p class="page-description"></p>
+		</header>
+		<div class="page-body">
+			<nav id="17a1fefb-5d05-806f-aa77-c3150b2a0fd8" class="block-color-gray table_of_contents">
+				<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-80eb-8083-eb5d665ae2d5">Header</a></div>
+				<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-800f-948f-e7413f0e2e43">Projects and Experiences</a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-8098-840e-e6fae078eeea">Bioinformatics @ <a
+							href="https://www.upenn.edu/">UPenn</a></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-80af-a231-ec7e42339f9c">Augmented Reality @ <a
+							href="https://www.jorjin.com/">Jorjin</a></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-809e-8644-c7f7878a72bc"><strong>Cutting-Edge Algorithms</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-809d-accb-f1663230b25d"><strong>Project and Team Management</strong></a>
+				</div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-804d-b71b-e353927bf9e9">Tech Stack</a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-80ef-83a5-de4e48daf048"><strong>Results</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-80da-9ed7-e2867e3db93d">Eye-Pressure and Retinography @ <a
+							href="https://www.itri.org.tw/english/">ITRI</a></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-8002-ab51-d317bcef976f"><strong>Tech Stack</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-80d9-8fd4-ce2277a2487b"><strong>Results</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-8074-9061-d860ee22979c">Engineering Education Projects</a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-800e-bb22-c76ecf859de4"><strong>Trebuchet Engineering Challenge: Physics in
+							Action</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-8016-936e-d899f2c42c7e"><strong>Line-Sensing Robot Car: Navigating
+							Creativity</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-80b1-9cd1-ef6089b372d4"><strong>The Golden Finger: Voice-Controlled
+							Appliances</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-8065-9ded-fd18a546038c"><strong>Arduino Docs Translator: Bridging Language
+							Gaps</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-809d-9762-deeae8dc41a0"><strong>College Application Assistant: AI-Powered
+							Guidance</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-8007-95ed-e77a9d4f7b64">CTA</a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17b1fefb-5d05-8022-90ef-d73e2454bb8c"><strong>Let’s Build Something Incredible
+							Together</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+						href="#17a1fefb-5d05-8029-aa08-ec9d4a5fdf3c">Footer</a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17b1fefb-5d05-8050-b510-d515849c8787"><strong>About Me</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17b1fefb-5d05-800d-8f4c-ef2dd26a9632"><strong>Quick Links</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17b1fefb-5d05-8093-995b-c76946ea737f"><strong>Connect</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17b1fefb-5d05-80d2-bd47-eed908a2a020"><strong>Contact</strong></a></div>
+				<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+						href="#17b1fefb-5d05-805a-b61a-fb985b4e62b0"><strong>Acknowledgements</strong></a></div>
+			</nav>
+			<h1 id="17a1fefb-5d05-80eb-8083-eb5d665ae2d5" class="">Header</h1>
+			<p id="17a1fefb-5d05-8025-9374-ed6ce2dae4c5" class="">&lt;Placeholder: Picture of something&gt;</p>
+			<p id="17a1fefb-5d05-803b-9ffb-c19d8d8d3480" class=""><em>Picture Placeholder (e.g., a sleek
+					engineering-related graphic or abstract design)</em></p>
+			<figure id="17a1fefb-5d05-8039-a69a-c20667210c40" class="image"><a
+					href="Main%20Page%2017a1fefb5d058019b459c8624c6794bd/DALLE_2025-01-13_10.31.15_-_A_minimalist_circular_graphic_design_symbolizing_tinkering_creativity_and_programming_featuring_a_small_rocket_element._The_design_includes_a_centr.webp"><img
+						style="width:240px"
+						src="Main%20Page%2017a1fefb5d058019b459c8624c6794bd/DALLE_2025-01-13_10.31.15_-_A_minimalist_circular_graphic_design_symbolizing_tinkering_creativity_and_programming_featuring_a_small_rocket_element._The_design_includes_a_centr.webp" /></a>
+			</figure>
+			<p id="17a1fefb-5d05-8009-a0b8-da3fa9f12795" class=""><strong>Louis Ying-Hong Lu</strong></p>
+			<p id="17a1fefb-5d05-80e2-a539-d2da08955ce4" class=""><em>Engineering Portfolio</em></p>
+			<p id="17a1fefb-5d05-80c1-b2a0-d683db518d8a" class="">Welcome! I&#x27;m Ying-Hong Lu, a passionate
+				full-stack Java developer with 4+ years of experience specializing in microservices, Android
+				development, and edtech solutions.</p>
+			<p id="17a1fefb-5d05-804d-9639-f59f509c86ad" class="">👉 Let’s connect on <a
+					href="https://www.linkedin.com/in/louis-ying-hong-lu/">LinkedIn</a>.</p>
+			<h1 id="17a1fefb-5d05-800f-948f-e7413f0e2e43" class="">Projects and Experiences</h1>
+			<h2 id="17a1fefb-5d05-8098-840e-e6fae078eeea" class="">Bioinformatics @ <a
+					href="https://www.upenn.edu/">UPenn</a></h2>
+			<p id="17a1fefb-5d05-801b-9d6e-d01ebade73fb" class="">Did you know that learning about air quality can
+				transform how students see the world? As the software engineering lead, I contribute to an edtech suite
+				rooted in cutting-edge research. From firmware and app development to full-stack engineering, I bring
+				this innovative project to life.</p>
+			<p id="17a1fefb-5d05-8062-9b25-e7f61e95c7b9" class="">For this project, I utilized <strong>Python</strong>
+				for firmware development, <strong>Kotlin</strong> for Android app creation, and <strong>Spring
+					Boot</strong> with <strong>PostgreSQL</strong> for the backend system. I also leveraged
+				<strong>AWS</strong> for cloud infrastructure, <strong>Docker</strong> for containerization, and
+				<strong>Kubernetes</strong> for scalable deployment. Additionally, <strong>BLE communication</strong>
+				and <strong>REST APIs</strong> ensured seamless interaction between devices and the cloud.</p>
+			<p id="17a1fefb-5d05-803d-a575-c1bf762d3966" class=""><a
+					href="https://www.notion.so/Bioinformatics-UPenn-17a1fefb5d058038ade3e2664d1b741b?pvs=21">👉 Dive
+					deeper into the project </a></p>
+			<figure id="17a1fefb-5d05-8038-ade3-e2664d1b741b" class="link-to-page"><a
+					href="https://www.notion.so/Bioinformatics-UPenn-17a1fefb5d058038ade3e2664d1b741b?pvs=21">Bioinformatics
+					@ UPenn</a></figure>
+			<h2 id="17a1fefb-5d05-80af-a231-ec7e42339f9c" class="">Augmented Reality @ <a
+					href="https://www.jorjin.com/">Jorjin</a></h2>
+			<h3 id="17a1fefb-5d05-809e-8644-c7f7878a72bc" class=""><strong>Cutting-Edge Algorithms</strong></h3>
+			<p id="17a1fefb-5d05-807a-ae9b-e98e2eb8fdd2" class="">Energy efficiency is crucial for delivering a great
+				user experience in mobile augmented reality devices. I led R&amp;D efforts utilizing a time-of-flight
+				sensor to reduce energy consumption by over 50% compared to traditional methods.</p>
+			<h3 id="17a1fefb-5d05-809d-accb-f1663230b25d" class=""><strong>Project and Team Management</strong></h3>
+			<p id="17a1fefb-5d05-80be-ac4e-cbf07707e477" class="">At Jorjin, we emphasized transparent work
+				distribution, efficient communication, and accountability. I championed the use of <strong>SOLID
+					principles</strong> during code reviews to ensure clean, maintainable code. Our team also
+				prioritized extensive documentation to streamline debugging and accelerate feature development.</p>
+			<h3 id="17a1fefb-5d05-804d-b71b-e353927bf9e9" class="">Tech Stack</h3>
+			<p id="17a1fefb-5d05-80e2-a565-edef7a8bbabf" class="">This project relied on a diverse set of technologies,
+				including <strong>Python</strong> and <strong>C++</strong> for developing core algorithms and computer
+				vision features using <strong>OpenCV</strong>. On the mobile side, I worked with <strong>Java</strong>,
+				<strong>Kotlin</strong>, and <strong>Android</strong> to create intuitive and efficient user interfaces.
+				The project also involved advanced <strong>multithreading techniques</strong> to optimize performance
+				and ensure smooth operation of real-time augmented reality functionalities.</p>
+			<h3 id="17a1fefb-5d05-80ef-83a5-de4e48daf048" class=""><strong>Results</strong></h3>
+			<p id="17a1fefb-5d05-802d-ab47-f0af80f72064" class="">Over my 3-year tenure, our journey began with a
+				brand-new hardware design and zero code. By the end, we achieved remarkable milestones, including
+				winning the <strong>Best Choice Award</strong> and <strong>Golden Award</strong> at Computex. Our
+				success led to investments by <strong>Foxconn</strong> and a collaboration with <strong>ASUS</strong>,
+				establishing Jorjin as a leader in AR innovation.</p>
+			<p id="17a1fefb-5d05-80cc-9749-e480997bbfe7" class="">👉 <a
+					href="https://www.notion.so/Augmented-Reality-Jorjin-17a1fefb5d0580bd8a37dd9d00a0dcc8?pvs=21">Discover
+					more about this project</a></p>
+			<p id="17a1fefb-5d05-80c3-8b7a-e472eb4b0899" class=""><a
+					href="https://www.notion.so/Augmented-Reality-Jorjin-17a1fefb5d0580bd8a37dd9d00a0dcc8?pvs=21">Learn
+					More</a></p>
+			<figure id="17a1fefb-5d05-80bd-8a37-dd9d00a0dcc8" class="link-to-page"><a
+					href="https://www.notion.so/Augmented-Reality-Jorjin-17a1fefb5d0580bd8a37dd9d00a0dcc8?pvs=21">Augmented
+					Reality @ Jorjin</a></figure>
+			<h2 id="17a1fefb-5d05-80da-9ed7-e2867e3db93d" class="">Eye-Pressure and Retinography @ <a
+					href="https://www.itri.org.tw/english/">ITRI</a></h2>
+			<p id="17a1fefb-5d05-80c8-b43b-ee40d8556984" class="">We developed a novel at-home eye-pressure monitoring
+				system to improve accessibility and convenience for patients. This system included an <strong>Android
+					application</strong> designed for seamless user interaction and accurate data capture. Additionally,
+				we streamlined the field screening process with a <strong>React web application</strong>, complemented
+				by an <strong>Electron-based desktop solution</strong> for robust cross-platform functionality.</p>
+			<h3 id="17a1fefb-5d05-8002-ab51-d317bcef976f" class=""><strong>Tech Stack</strong></h3>
+			<p id="17a1fefb-5d05-80d5-a371-d95f1c1f8083" class="">The project utilized <strong>Android</strong> with
+				<strong>Java</strong> for mobile development, <strong>React</strong> for building a responsive and
+				user-friendly web application, and <strong>Electron</strong> for creating a desktop application that
+				enhanced usability in clinical settings.</p>
+			<h3 id="17a1fefb-5d05-80d9-8fd4-ce2277a2487b" class=""><strong>Results</strong></h3>
+			<p id="17a1fefb-5d05-8055-9dc0-cbc2247c025e" class="">The Industrial Technology Research Institute’s (ITRI)
+				ICT Innovation for Self-Service Ophthalmoscope won the <strong>Merit Award</strong> in the “Innovative
+				eHealth Solutions” category, showcasing the impact and innovation of this project.</p>
+			<p id="17a1fefb-5d05-80da-a6d1-cac824982d0e" class="">👉 <a
+					href="https://www.notion.so/Eye-Pressure-and-Retinography-ITRI-17a1fefb5d0580daa719e46bafb31372?pvs=21">Learn
+					more about this project</a></p>
+			<figure id="17a1fefb-5d05-80da-a719-e46bafb31372" class="link-to-page"><a
+					href="https://www.notion.so/Eye-Pressure-and-Retinography-ITRI-17a1fefb5d0580daa719e46bafb31372?pvs=21">Eye-Pressure
+					and Retinography @ ITRI</a></figure>
+			<h2 id="17a1fefb-5d05-8074-9061-d860ee22979c" class="">Engineering Education Projects</h2>
+			<h3 id="17a1fefb-5d05-800e-bb22-c76ecf859de4" class=""><strong>Trebuchet Engineering Challenge: Physics in
+					Action</strong></h3>
+			<p id="17a1fefb-5d05-804e-ad45-f912b1bf333b" class="">In this hands-on project, we assembled a
+				<strong>massive trebuchet</strong> and used it to play an oversized board game, teaching key principles
+				of physics such as leverage, energy transfer, and projectile motion. This project allowed us to apply
+				engineering concepts in an engaging and interactive way.</p>
+			<h3 id="17a1fefb-5d05-8016-936e-d899f2c42c7e" class=""><strong>Line-Sensing Robot Car: Navigating
+					Creativity</strong></h3>
+			<p id="17a1fefb-5d05-80b5-97d1-efc78b89f7e6" class="">We designed a <strong>maze-solving robot car</strong>
+				that follows a black line using an infrared sensor. This project emphasized teamwork, problem-solving,
+				and creativity as we developed algorithms and collaborated to create a functional and responsive system.
+			</p>
+			<h3 id="17a1fefb-5d05-80b1-9cd1-ef6089b372d4" class=""><strong>The Golden Finger: Voice-Controlled
+					Appliances</strong></h3>
+			<p id="17a1fefb-5d05-8021-bf0c-f7cdd93e924f" class="">In this hackathon project, we created <strong>The
+					Golden Finger</strong>, a system that lets you point to any home appliance and control it by
+				shouting out voice commands. By combining <strong>computer vision</strong> and <strong>speech
+					recognition</strong>, this project explored the power of user interfaces and accessibility.</p>
+			<h3 id="17a1fefb-5d05-8065-9ded-fd18a546038c" class=""><strong>Arduino Docs Translator: Bridging Language
+					Gaps</strong></h3>
+			<p id="17a1fefb-5d05-80ac-80e1-fa2b832173e6" class="">To help non-English speaking developers, we built a
+				<strong>Chinese translation website</strong> for the <strong>Arduino documentation</strong>, making
+				technical knowledge more accessible and promoting learning across language barriers.</p>
+			<h3 id="17a1fefb-5d05-809d-9762-deeae8dc41a0" class=""><strong>College Application Assistant: AI-Powered
+					Guidance</strong></h3>
+			<p id="17a1fefb-5d05-80b7-ad3f-e97a287d43a0" class="">We developed a website that uses
+				<strong>GPT-3.5</strong> to provide real-time suggestions and feedback for refining college application
+				documents. This AI-powered assistant offers personalized guidance, helping students perfect their
+				applications for a better chance of success.</p>
+			<p id="17a1fefb-5d05-80fe-952b-c3d39fe33f99" class="">Learn More</p>
+			<h1 id="17a1fefb-5d05-8007-95ed-e77a9d4f7b64" class="">CTA</h1>
+			<h3 id="17b1fefb-5d05-8022-90ef-d73e2454bb8c" class=""><strong>Let’s Build Something Incredible
+					Together</strong></h3>
+			<p id="17b1fefb-5d05-8067-a464-d9d19d94f40d" class="">Thank you for exploring my portfolio! Whether you’re
+				here to collaborate, share ideas, or discuss innovative solutions, I’d love to connect. My passion lies
+				in combining engineering, creativity, and cutting-edge technology to create meaningful impact.</p>
+			<p id="17b1fefb-5d05-8090-98d5-fdae8bd80376" class="">👉 <strong><a
+						href="https://www.linkedin.com/in/louis-ying-hong-lu/">Reach out on LinkedIn</a></strong></p>
+			<p id="17b1fefb-5d05-80f1-ac65-f4177398630e" class="">👉 <strong><a
+						href="https://www.notion.so/Main-Page-17a1fefb5d058019b459c8624c6794bd?pvs=21">Learn more about
+						my projects</a></strong></p>
+			<p id="17b1fefb-5d05-8086-84eb-c2222653f520" class="">Let’s turn ideas into reality!</p>
+			<h1 id="17a1fefb-5d05-8029-aa08-ec9d4a5fdf3c" class="">Footer</h1>
+			<h3 id="17b1fefb-5d05-8050-b510-d515849c8787" class=""><strong>About Me</strong></h3>
+			<p id="17b1fefb-5d05-807a-ad98-d1dfc997dff7" class="">Ying-Hong Lu | Software Engineer</p>
+			<p id="17b1fefb-5d05-8065-86fe-ce3feed6276e" class="">Passionate about creating human-centered technology
+				and innovative engineering solutions.</p>
+			<h3 id="17b1fefb-5d05-800d-8f4c-ef2dd26a9632" class=""><strong>Quick Links</strong></h3>
+			<ul id="17b1fefb-5d05-8005-ac60-d768239720dd" class="bulleted-list">
+				<li style="list-style-type:disc"><a
+						href="https://www.notion.so/Main-Page-17a1fefb5d058019b459c8624c6794bd?pvs=21">Home</a></li>
+			</ul>
+			<ul id="17b1fefb-5d05-8083-9055-d091274a32a7" class="bulleted-list">
+				<li style="list-style-type:disc"><a
+						href="https://www.notion.so/Main-Page-17a1fefb5d058019b459c8624c6794bd?pvs=21">Projects</a></li>
+			</ul>
+			<ul id="17b1fefb-5d05-80d9-a2c4-f0e57b13cdd6" class="bulleted-list">
+				<li style="list-style-type:disc"><a
+						href="https://www.notion.so/Main-Page-17a1fefb5d058019b459c8624c6794bd?pvs=21">Contact</a></li>
+			</ul>
+			<h3 id="17b1fefb-5d05-8093-995b-c76946ea737f" class=""><strong>Connect</strong></h3>
+			<ul id="17b1fefb-5d05-80ae-afa6-f8a49a840c42" class="bulleted-list">
+				<li style="list-style-type:disc"><a href="https://www.linkedin.com/in/louis-ying-hong-lu/">LinkedIn</a>
+				</li>
+			</ul>
+			<ul id="17b1fefb-5d05-80bc-b812-c8a0067ce066" class="bulleted-list">
+				<li style="list-style-type:disc"><a
+						href="https://www.notion.so/Main-Page-17a1fefb5d058019b459c8624c6794bd?pvs=21">GitHub</a>
+					<em>(if applicable)</em></li>
+			</ul>
+			<ul id="17b1fefb-5d05-8034-a49c-e6ff5d8b4245" class="bulleted-list">
+				<li style="list-style-type:disc"><a
+						href="https://www.notion.so/Main-Page-17a1fefb5d058019b459c8624c6794bd?pvs=21">Twitter</a>
+					<em>(if applicable)</em></li>
+			</ul>
+			<h3 id="17b1fefb-5d05-80d2-bd47-eed908a2a020" class=""><strong>Contact</strong></h3>
+			<p id="17b1fefb-5d05-80a3-b223-f7653e5af46c" class="">📧 <strong>Email:</strong> your_email@example.com</p>
+			<p id="17b1fefb-5d05-8069-866f-d97dfc86cd92" class="">📍 Based in [Your Location] <em>(e.g., Philadelphia,
+					PA)</em></p>
+			<h3 id="17b1fefb-5d05-805a-b61a-fb985b4e62b0" class=""><strong>Acknowledgements</strong></h3>
+			<p id="17b1fefb-5d05-8020-80fe-c9a869ada8c0" class="">© 2025 Ying-Hong Lu. All rights reserved.</p>
+		</div>
+	</article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+</body>
+
+</html>
